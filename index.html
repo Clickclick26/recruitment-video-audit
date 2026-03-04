@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Experience Group | Video Gap Analysis 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FFFDF5; /* Cream Background */
+            --accent-pink: #FF4500; /* Reddit Pink Accent */
+            --accent-teal: #00CED1; /* Dark Turquoise Accent */
+            --text-black: #1A1A1A; /* Black Poppins Font */
+            --gray-subtle: #808080;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-black);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-teal);
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-weight: 600;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header span {
+            color: var(--gray-subtle);
+            font-weight: 300;
+        }
+
+        .audit-container {
+            width: 100%;
+            max-width: 900px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--bg-cream);
+            border-radius: 8px;
+            border: 1px solid rgba(0,206,209,0.2);
+        }
+
+        input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: 2px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
+
+        button {
+            background-color: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #audit-log {
+            font-family: monospace;
+            background-color: #F4F4F4;
+            color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .log-entry { margin-bottom: 10px; }
+        .log-cmd { color: var(--accent-teal); font-weight: bold; }
+        .log-error { color: var(--accent-pink); font-weight: bold; }
+        .log-success { color: #228B22; font-weight: bold; } /* Dark Green for success */
+
+        .trust-score-panel {
+            margin-top: 30px;
+            text-align: center;
+            border-top: 2px solid rgba(0,206,209,0.1);
+            padding-top: 20px;
+        }
+
+        .trust-title { font-weight: 600; font-size: 1.3em; margin-bottom: 10px;}
+        .trust-bar-bg { background-color: #E0E0E0; border-radius: 20px; height: 30px; width: 100%; max-width: 600px; margin: 0 auto; overflow: hidden;}
+        #trust-bar-fill { background-color: var(--accent-teal); height: 100%; width: 0%; border-radius: 20px; transition: width 2s ease-in-out; }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>1-Experience Group <span>| 2026 Video Gap Analysis</span></h1>
+    </div>
+
+    <div class="audit-container">
+        <div class="input-group">
+            <input type="text" id="target-agency" placeholder="Enter Competitor Name (e.g., MMA Healthcare)" value="1-Experience Group">
+            <button onclick="runAudit()">Run Real-Time Audit</button>
+        </div>
+
+        <div id="audit-log">
+            <p class="log-entry log-cmd">> Initializing 2026 Recruitment Scanner...</p>
+            <p class="log-entry">> Target: <span id="log-target">1-Experience Group</span></p>
+        </div>
+
+        <div class="trust-score-panel">
+            <div class="trust-title">Candidate Trust Score: <span id="trust-text">0% (Critical)</span></div>
+            <div class="trust-bar-bg">
+                <div id="trust-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runAudit() {
+            const agency = document.getElementById('target-agency').value;
+            const log = document.getElementById('audit-log');
+            const targetSpan = document.getElementById('log-target');
+            const trustText = document.getElementById('trust-text');
+            const trustFill = document.getElementById('trust-bar-fill');
+
+            // Reset UI
+            log.innerHTML = `<p class="log-entry log-cmd">> Starting Market Scan for: ${agency}...</p>`;
+            targetSpan.innerText = agency;
+            trustText.innerText = 'Analyzing...';
+            trustFill.style.width = '0%';
+
+            let is1Exp = (agency.toLowerCase().includes('1-experience') || agency.toLowerCase().includes('1experience'));
+
+            // The Audit Simulation (Looks like it's running code)
+            setTimeout(() => {
+                const entry = document.createElement('p');
+                entry.className = 'log-entry';
+                entry.innerHTML = `> Querying Indeed API for '${agency}' <span class="log-teal">[Video Job Descriptions]</span>...`;
+                log.appendChild(entry);
+                log.scrollTop = log.scrollHeight;
+            }, 1000);
+
+            setTimeout(() => {
+                const entry = document.createElement('p');
+                entry.className = 'log-entry';
+                if (is1Exp) {
+                    entry.innerHTML = `[!] WARNING: <span class="log-error">Zero (0) Video Assets Detected.</span>`;
+                } else {
+                    entry.innerHTML = `[✓] SUCCESS: <span class="log-success">Active 'Indeed Video' Layers Found.</span>`;
+                }
+                log.appendChild(entry);
+                log.scrollTop = log.scrollHeight;
+            }, 2500);
+
+            setTimeout(() => {
+                const entry = document.createElement('p');
+                entry.className = 'log-entry';
+                entry.innerHTML = `> Querying LinkedIn API <span class="log-teal">[Ambassador 'Life' Content]</span>...`;
+                log.appendChild(entry);
+                log.scrollTop = log.scrollHeight;
+            }, 3500);
+
+            // The Final Result & The Scare
+            setTimeout(() => {
+                const entry = document.createElement('p');
+                entry.className = 'log-entry';
+                
+                if (is1Exp) {
+                    entry.innerHTML = `[!] ANALYSIS COMPLETE: <span class="log-error">A 72% Trust Loss is likely compared to rivals. Candidates cannot verify brand authenticity.</span>`;
+                    trustText.innerText = '28% (Static Only)';
+                    trustFill.style.width = '28%';
+                    trustFill.style.backgroundColor = '#FF4500'; // Pink for bad score
+                } else {
+                    entry.innerHTML = `[✓] ANALYSIS COMPLETE: <span class="log-success">Video assets increase mobile engagement by 5x. Brand appears dominant.</span>`;
+                    trustText.innerText = '88% (Video Verified)';
+                    trustFill.style.width = '88%';
+                    trustFill.style.backgroundColor = '#00CED1'; // Teal for good score
+                }
+                log.appendChild(entry);
+                log.scrollTop = log.scrollHeight;
+            }, 5500);
+        }
+    </style>
+</body>
+</html>
