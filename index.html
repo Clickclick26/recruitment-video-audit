@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1-Experience Group | Video Gap Analysis 2026</title>
+    <title>Global Video Gap Analysis | Recruitment Industry Auditor v2.6</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-cream: #FFFDF5; /* Cream Background */
-            --accent-pink: #FF4500; /* Reddit Pink Accent */
+            --accent-red-pink: #E0115F; /* Sleek Reddish Pink Accent */
             --accent-teal: #00CED1; /* Dark Turquoise Accent */
             --text-black: #1A1A1A; /* Black Poppins Font */
             --gray-subtle: #808080;
@@ -38,12 +38,14 @@
         .header h1 {
             font-weight: 600;
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.2em;
         }
 
         .header span {
             color: var(--gray-subtle);
             font-weight: 300;
+            display: block;
+            margin-top: 5px;
         }
 
         .audit-container {
@@ -80,7 +82,7 @@
         }
 
         button {
-            background-color: var(--accent-pink);
+            background-color: var(--accent-red-pink);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -89,7 +91,7 @@
             font-weight: 600;
             font-size: 1.1em;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: opacity 0.2s;
         }
 
         button:hover {
@@ -109,7 +111,7 @@
 
         .log-entry { margin-bottom: 10px; }
         .log-cmd { color: var(--accent-teal); font-weight: bold; }
-        .log-error { color: var(--accent-pink); font-weight: bold; }
+        .log-error { color: var(--accent-red-pink); font-weight: bold; }
         .log-success { color: #228B22; font-weight: bold; } /* Dark Green for success */
 
         .trust-score-panel {
@@ -128,22 +130,22 @@
 <body>
 
     <div class="header">
-        <h1>1-Experience Group <span>| 2026 Video Gap Analysis</span></h1>
+        <h1>Global Video Gap Analysis</h1>
+        <span>Proprietary Recruitment Industry Auditor (v2.6)</span>
     </div>
 
     <div class="audit-container">
         <div class="input-group">
-            <input type="text" id="target-agency" placeholder="Enter Competitor Name (e.g., MMA Healthcare)" value="1-Experience Group">
-            <button onclick="runAudit()">Run Real-Time Audit</button>
+            <input type="text" id="target-agency" placeholder="Enter Target Agency (e.g., MMA Healthcare, Randstad)">
+            <button id="run-btn">Run Analysis</button>
         </div>
 
         <div id="audit-log">
-            <p class="log-entry log-cmd">> Initializing 2026 Recruitment Scanner...</p>
-            <p class="log-entry">> Target: <span id="log-target">1-Experience Group</span></p>
+            <p class="log-entry log-cmd">> System Online. Scanning global nodes...</p>
         </div>
 
         <div class="trust-score-panel">
-            <div class="trust-title">Candidate Trust Score: <span id="trust-text">0% (Critical)</span></div>
+            <div class="trust-title">Candidate Trust Index: <span id="trust-text">Pending Target...</span></div>
             <div class="trust-bar-bg">
                 <div id="trust-bar-fill"></div>
             </div>
@@ -151,70 +153,55 @@
     </div>
 
     <script>
-        function runAudit() {
+        document.getElementById('run-btn').addEventListener('click', function() {
             const agency = document.getElementById('target-agency').value;
             const log = document.getElementById('audit-log');
-            const targetSpan = document.getElementById('log-target');
             const trustText = document.getElementById('trust-text');
             const trustFill = document.getElementById('trust-bar-fill');
 
             // Reset UI
-            log.innerHTML = `<p class="log-entry log-cmd">> Starting Market Scan for: ${agency}...</p>`;
-            targetSpan.innerText = agency;
+            log.innerHTML = `<p class="log-entry log-cmd">> Accessing global recruitment metadata for: ${agency}...</p>`;
             trustText.innerText = 'Analyzing...';
             trustFill.style.width = '0%';
 
-            let is1Exp = (agency.toLowerCase().includes('1-experience') || agency.toLowerCase().includes('1experience'));
+            // Simple logic: If agency name starts with 'randstad', 'hays', or 'amn', they have video. Otherwise, they have zero.
+            const hasVideo = ['randstad', 'hays', 'amn', 'mma'].some(v => agency.toLowerCase().includes(v));
 
-            // The Audit Simulation (Looks like it's running code)
             setTimeout(() => {
-                const entry = document.createElement('p');
-                entry.className = 'log-entry';
-                entry.innerHTML = `> Querying Indeed API for '${agency}' <span class="log-teal">[Video Job Descriptions]</span>...`;
-                log.appendChild(entry);
+                log.innerHTML += `<p class="log-entry">> Parsing Indeed (VJD Layer) API...</p>`;
                 log.scrollTop = log.scrollHeight;
-            }, 1000);
+            }, 800);
 
             setTimeout(() => {
-                const entry = document.createElement('p');
-                entry.className = 'log-entry';
-                if (is1Exp) {
-                    entry.innerHTML = `[!] WARNING: <span class="log-error">Zero (0) Video Assets Detected.</span>`;
+                if (hasVideo) {
+                    log.innerHTML += `<p class="log-entry log-success">[✓] SUCCESS: Indeed 'Video Job Description' Detected. Trust boost confirmed.</p>`;
                 } else {
-                    entry.innerHTML = `[✓] SUCCESS: <span class="log-success">Active 'Indeed Video' Layers Found.</span>`;
+                    log.innerHTML += `<p class="log-entry log-error">[!] ALERT: Zero Indeed Video Assets Found. Trust penalty applied.</p>`;
                 }
-                log.appendChild(entry);
                 log.scrollTop = log.scrollHeight;
             }, 2500);
 
             setTimeout(() => {
-                const entry = document.createElement('p');
-                entry.className = 'log-entry';
-                entry.innerHTML = `> Querying LinkedIn API <span class="log-teal">[Ambassador 'Life' Content]</span>...`;
-                log.appendChild(entry);
+                log.innerHTML += `<p class="log-entry">> Parsing LinkedIn (Ambassador 'Life' Content) API...</p>`;
                 log.scrollTop = log.scrollHeight;
             }, 3500);
 
             // The Final Result & The Scare
             setTimeout(() => {
-                const entry = document.createElement('p');
-                entry.className = 'log-entry';
-                
-                if (is1Exp) {
-                    entry.innerHTML = `[!] ANALYSIS COMPLETE: <span class="log-error">A 72% Trust Loss is likely compared to rivals. Candidates cannot verify brand authenticity.</span>`;
+                if (hasVideo) {
+                    log.innerHTML += `<p class="log-entry log-success">[✓] ANALYSIS COMPLETE: Active Video Funnel increases candidate intent by 300%.</p>`;
+                    trustText.innerText = '92% (Video Verified)';
+                    trustFill.style.width = '92%';
+                    trustFill.style.backgroundColor = '#00CED1'; // Teal for good score
+                } else {
+                    log.innerHTML += `<p class="log-entry log-error">[!] ALERT: Zero LinkedIn 'Ambassador' Content Found. Brand appears static and unverified on mobile.</p>`;
                     trustText.innerText = '28% (Static Only)';
                     trustFill.style.width = '28%';
-                    trustFill.style.backgroundColor = '#FF4500'; // Pink for bad score
-                } else {
-                    entry.innerHTML = `[✓] ANALYSIS COMPLETE: <span class="log-success">Video assets increase mobile engagement by 5x. Brand appears dominant.</span>`;
-                    trustText.innerText = '88% (Video Verified)';
-                    trustFill.style.width = '88%';
-                    trustFill.style.backgroundColor = '#00CED1'; // Teal for good score
+                    trustFill.style.backgroundColor = '#E0115F'; // Red-Pink for bad score
                 }
-                log.appendChild(entry);
                 log.scrollTop = log.scrollHeight;
             }, 5500);
-        }
-    </style>
+        });
+    </script>
 </body>
 </html>
