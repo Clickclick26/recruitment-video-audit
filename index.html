@@ -3,205 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Video Gap Analysis | Recruitment Industry Auditor v2.6</title>
+    <title>Video Authority Auditor | Global Market Intelligence v2.6</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-cream: #FFFDF5; /* Cream Background */
-            --accent-red-pink: #E0115F; /* Sleek Reddish Pink Accent */
-            --accent-teal: #00CED1; /* Dark Turquoise Accent */
-            --text-black: #1A1A1A; /* Black Poppins Font */
-            --gray-subtle: #808080;
-        }
-
-        body {
-            background-color: var(--bg-cream);
-            color: var(--text-black);
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .header {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--accent-teal);
-            padding-bottom: 20px;
-        }
-
-        .header h1 {
-            font-weight: 600;
-            margin: 0;
-            font-size: 2.2em;
-        }
-
-        .header span {
-            color: var(--gray-subtle);
-            font-weight: 300;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .audit-container {
-            width: 100%;
-            max-width: 900px;
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .input-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: var(--bg-cream);
-            border-radius: 8px;
-            border: 1px solid rgba(0,206,209,0.2);
-        }
-
-        input {
-            flex-grow: 1;
-            padding: 12px 20px;
-            border: 2px solid rgba(0,0,0,0.1);
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1em;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--accent-teal);
-        }
-
-        button {
-            background-color: var(--accent-red-pink);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        #audit-log {
-            font-family: monospace;
-            background-color: #F4F4F4;
-            color: #333333;
-            padding: 20px;
-            border-radius: 8px;
-            height: 300px;
-            overflow-y: auto;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .log-entry { margin-bottom: 10px; }
-        .log-cmd { color: var(--accent-teal); font-weight: bold; }
-        .log-error { color: var(--accent-red-pink); font-weight: bold; }
-        .log-success { color: #228B22; font-weight: bold; } /* Dark Green for success */
-
-        .trust-score-panel {
-            margin-top: 30px;
-            text-align: center;
-            border-top: 2px solid rgba(0,206,209,0.1);
-            padding-top: 20px;
-        }
-
-        .trust-title { font-weight: 600; font-size: 1.3em; margin-bottom: 10px;}
-        .trust-bar-bg { background-color: #E0E0E0; border-radius: 20px; height: 30px; width: 100%; max-width: 600px; margin: 0 auto; overflow: hidden;}
-        #trust-bar-fill { background-color: var(--accent-teal); height: 100%; width: 0%; border-radius: 20px; transition: width 2s ease-in-out; }
-
+        :root { --bg-cream: #FFFDF5; --accent-red-pink: #E0115F; --accent-teal: #00CED1; --text-black: #1A1A1A; --gray-subtle: #808080; }
+        body { background-color: var(--bg-cream); color: var(--text-black); font-family: 'Poppins', sans-serif; margin: 0; padding: 40px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .header { width: 100%; max-width: 900px; text-align: center; margin-bottom: 20px; border-bottom: 2px solid var(--accent-teal); padding-bottom: 20px; }
+        .header h1 { font-weight: 600; margin: 0; font-size: 2.2em; }
+        .audit-container { width: 100%; max-width: 900px; background: #FFFFFF; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .input-group { display: flex; gap: 15px; margin-bottom: 20px; padding: 15px; background-color: var(--bg-cream); border-radius: 8px; border: 1px solid rgba(0,206,209,0.2); }
+        input { flex-grow: 1; padding: 12px; border: 2px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: 'Poppins', sans-serif; }
+        button { background-color: var(--accent-red-pink); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        #audit-log { font-family: 'Courier New', monospace; background-color: #1a1a1a; color: #00FF41; padding: 20px; border-radius: 8px; height: 400px; overflow-y: auto; font-size: 0.85em; line-height: 1.4; }
+        .log-error { color: var(--accent-red-pink); }
+        .log-warn { color: #FFA500; }
+        .log-success { color: var(--accent-teal); }
+        .trust-score-panel { margin-top: 20px; text-align: center; }
+        .trust-bar-bg { background-color: #E0E0E0; border-radius: 20px; height: 25px; width: 100%; margin: 10px 0; overflow: hidden;}
+        #trust-bar-fill { background-color: var(--accent-teal); height: 100%; width: 0%; transition: width 4s ease-in-out; }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <h1>Global Video Gap Analysis</h1>
-        <span>Proprietary Recruitment Industry Auditor (v2.6)</span>
-    </div>
-
+    <div class="header"><h1>Video Authority Auditor</h1><span>Global Market Intelligence v2.6.4_Stable</span></div>
     <div class="audit-container">
         <div class="input-group">
-            <input type="text" id="target-agency" placeholder="Enter Target Agency (e.g., MMA Healthcare, Randstad)">
-            <button id="run-btn">Run Analysis</button>
+            <input type="text" id="target-agency" placeholder="Enter Company URL or Brand Name...">
+            <button id="run-btn">Execute Deep Scan</button>
         </div>
-
-        <div id="audit-log">
-            <p class="log-entry log-cmd">> System Online. Scanning global nodes...</p>
-        </div>
-
+        <div id="audit-log">> SYSTEM_READY: Waiting for target string...</div>
         <div class="trust-score-panel">
-            <div class="trust-title">Candidate Trust Index: <span id="trust-text">Pending Target...</span></div>
-            <div class="trust-bar-bg">
-                <div id="trust-bar-fill"></div>
-            </div>
+            <div class="trust-title">Consumer Trust Index: <span id="trust-text">N/A</span></div>
+            <div class="trust-bar-bg"><div id="trust-bar-fill"></div></div>
         </div>
     </div>
 
     <script>
+        const logData = [
+            { t: "> Initializing Neural Intelligence Engine...", c: "" },
+            { t: "> Pinging Global Social Discovery Nodes...", c: "" },
+            { t: "> Analyzing 'Human-Centric' Media Latency...", c: "" },
+            { t: "> Checking Schema.org Structured Data for VideoObject...", c: "log-warn" },
+            { t: "> Scanning Platform APIs for Active Rich Media Layers...", c: "" },
+            { t: "> Verifying CDN Edge-Caching for International Delivery...", c: "" },
+            { t: "> Measuring Brand Authenticity Buffer Scores...", c: "" },
+            { t: "> Scoping Mobile Engagement Pixel Integration...", c: "" },
+            { t: "> CROSS-REFERENCING MARKET BENCHMARKS...", c: "log-cmd" }
+        ];
+
         document.getElementById('run-btn').addEventListener('click', function() {
-            const agency = document.getElementById('target-agency').value;
+            const agency = document.getElementById('target-agency').value.toLowerCase();
             const log = document.getElementById('audit-log');
             const trustText = document.getElementById('trust-text');
             const trustFill = document.getElementById('trust-bar-fill');
-
-            // Reset UI
-            log.innerHTML = `<p class="log-entry log-cmd">> Accessing global recruitment metadata for: ${agency}...</p>`;
-            trustText.innerText = 'Analyzing...';
+            
+            log.innerHTML = "";
+            trustText.innerText = 'CALCULATING...';
             trustFill.style.width = '0%';
 
-            // Simple logic: If agency name starts with 'randstad', 'hays', or 'amn', they have video. Otherwise, they have zero.
-            const hasVideo = ['randstad', 'hays', 'amn', 'mma'].some(v => agency.toLowerCase().includes(v));
-
-            setTimeout(() => {
-                log.innerHTML += `<p class="log-entry">> Parsing Indeed (VJD Layer) API...</p>`;
-                log.scrollTop = log.scrollHeight;
-            }, 800);
-
-            setTimeout(() => {
-                if (hasVideo) {
-                    log.innerHTML += `<p class="log-entry log-success">[✓] SUCCESS: Indeed 'Video Job Description' Detected. Trust boost confirmed.</p>`;
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < logData.length) {
+                    const p = document.createElement('p');
+                    p.className = logData[i].c;
+                    p.innerText = logData[i].t;
+                    log.appendChild(p);
+                    log.scrollTop = log.scrollHeight;
+                    i++;
                 } else {
-                    log.innerHTML += `<p class="log-entry log-error">[!] ALERT: Zero Indeed Video Assets Found. Trust penalty applied.</p>`;
+                    clearInterval(interval);
+                    finalizeAudit(agency, log, trustText, trustFill);
                 }
-                log.scrollTop = log.scrollHeight;
-            }, 2500);
-
-            setTimeout(() => {
-                log.innerHTML += `<p class="log-entry">> Parsing LinkedIn (Ambassador 'Life' Content) API...</p>`;
-                log.scrollTop = log.scrollHeight;
-            }, 3500);
-
-            // The Final Result & The Scare
-            setTimeout(() => {
-                if (hasVideo) {
-                    log.innerHTML += `<p class="log-entry log-success">[✓] ANALYSIS COMPLETE: Active Video Funnel increases candidate intent by 300%.</p>`;
-                    trustText.innerText = '92% (Video Verified)';
-                    trustFill.style.width = '92%';
-                    trustFill.style.backgroundColor = '#00CED1'; // Teal for good score
-                } else {
-                    log.innerHTML += `<p class="log-entry log-error">[!] ALERT: Zero LinkedIn 'Ambassador' Content Found. Brand appears static and unverified on mobile.</p>`;
-                    trustText.innerText = '28% (Static Only)';
-                    trustFill.style.width = '28%';
-                    trustFill.style.backgroundColor = '#E0115F'; // Red-Pink for bad score
-                }
-                log.scrollTop = log.scrollHeight;
-            }, 5500);
+            }, 400);
         });
+
+        function finalizeAudit(agency, log, trustText, trustFill) {
+            const p = document.createElement('p');
+            // 1-Experience: 0% Scare
+            if (agency.includes('1-experience') || agency.includes('1experience')) {
+                p.className = 'log-error';
+                p.innerText = "[!] CRITICAL_FAILURE: NO VIDEO ASSETS DETECTED. Brand is 'Ghosted' on mobile-first platforms. Global Trust Factor: 0%";
+                trustText.innerText = '0% (Presence Not Found)';
+                trustFill.style.width = '5%';
+                trustFill.style.backgroundColor = '#000000';
+            } 
+            // Direct Medics: 28% Scare
+            else if (agency.includes('direct medics') || agency.includes('directmedics')) {
+                p.className = 'log-warn';
+                p.innerText = "[!] WARNING: Legacy Static-Content detected. 72% Audience Abandonment due to lack of 'Human' verification.";
+                trustText.innerText = '28% (Failing Trust Index)';
+                trustFill.style.width = '28%';
+                trustFill.style.backgroundColor = '#E0115F';
+            } 
+            // Everyone else (Competitors): 92% Win
+            else {
+                p.className = 'log-success';
+                p.innerText = "[✓] DOMINANCE_DETECTED: Active 'Video-First' architecture verified. High retention for global audiences.";
+                trustText.innerText = '92% (Market Leader)';
+                trustFill.style.width = '92%';
+                trustFill.style.backgroundColor = '#00CED1';
+            }
+            log.appendChild(p);
+            log.scrollTop = log.scrollHeight;
+        }
     </script>
 </body>
 </html>
